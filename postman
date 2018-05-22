@@ -1,0 +1,27 @@
+
+
+
+GET http://reader.one/api/news/reddit?limit=20 HTTP/1.1
+
+
+                    {
+                        isEmpty
+                            ? (isFetching ? <h5>Loading...</h5> : <h5>Empty.</h5>)
+                            : <div style={{ opacity: isFetching ? 0.5 : 1 }} >
+                                <Posts posts={postsFromSelectedList} />
+                            </div>
+                    }
+
+
+                                        {
+                        isEmpty === true ?
+                            <div className="container info">
+                                <h5>Select source</h5>
+                            </div>
+                            : (posts.length === 0 ?
+                                <div className="container info">
+                                    <img src={require('../assets/loading.gif')} />
+                                </div>
+                                : <div ><Posts posts={posts} /></div>
+                            )
+                    }
