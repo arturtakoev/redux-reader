@@ -129,7 +129,6 @@ const responseToPosts = (source, json) => {
         )}
         
     )
-        console.log(posts)
         return posts
     }
 }
