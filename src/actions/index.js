@@ -123,12 +123,13 @@ const responseToPosts = (source, json) => {
                     url: post[source.jsonProperties.url],
                     comments: post[source.jsonProperties.comments],
                     site: source.jsonProperties.site,
-                    created: Date.parse(post[source.jsonProperties.created])
+                    created: new Date(post[source.jsonProperties.created].replace(/-/g, "/")),
                 }
             )
         )}
         
     )
+        console.log(posts)
         return posts
     }
 }

@@ -28,7 +28,6 @@ const SideMenu = ({ onClick, selectedSources, onSelectAll, onUnselectAll }) => {
             </li>
         ))
     }
-    console.log(selectedSources)
     return (
         <ul className="list-unstyled components">
             <div>
