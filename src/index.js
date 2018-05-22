@@ -7,7 +7,8 @@ import { createStore, applyMiddleware } from 'redux'
 import { selectSource, fetchPostsIfNeeded, fetchNews, subredditUrl } from './actions'
 import { createLogger } from 'redux-logger'
 
-
+require('./assets/newsIcon.png')
+import css from '../style/style.css';
 
 //import 'babel-polyfill';
 

@@ -34,10 +34,15 @@ const config = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192
+                            limit: 100,
+                            name: '[name].[ext]'
                         }
                     }
                 ]
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
