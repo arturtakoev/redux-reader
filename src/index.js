@@ -28,7 +28,8 @@ const configureStore = preloadedState => createStore(
 
 const initialState = {
   postsBySource: {},
-  selectedSources: initState(SOURCES, {}, false)
+  selectedSources: initState(SOURCES, {}, false),
+  toggleMenu: {isVisible: true}
 }
 
 const store = configureStore(initialState)

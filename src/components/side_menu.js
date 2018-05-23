@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 
 
-const SideMenu = ({ onClick, selectedSources, onSelectAll, onUnselectAll }) => {
+const SideMenu = ({ onClick, selectedSources, onSelectAll, onUnselectAll, showMenu }) => {
 
     const sourceActiveColor = '#ff5252'
     const sourceNotActiveColot = 'rgba(0, 0, 0, 0.54)'
@@ -19,16 +19,19 @@ const SideMenu = ({ onClick, selectedSources, onSelectAll, onUnselectAll }) => {
 
     function renderSourcesChecks() {
         return listOfSources.map((source) => (
+            <div className="relative">
             <li>
-
                 <label className="containerOne" style={selectedSources[source].isSelected ? { color: sourceActiveColor } : { color: sourceNotActiveColot }}>{selectedSources[source].properties.title}
                     <input type="checkbox" onChange={(e) => onClick(e, [source])} checked={selectedSources[source].isSelected} />
                     <span className="checkmark"></span>
                 </label>
             </li>
+            </div>
         ))
     }
     return (
+        <div>
+        <nav id="sidebar" className={showMenu.isVisible ? 'visible' : 'hidden'}>
         <ul className="list-unstyled components">
             <div>
                 <h3>
@@ -44,13 +47,18 @@ const SideMenu = ({ onClick, selectedSources, onSelectAll, onUnselectAll }) => {
             </div>
             {renderSourcesChecks()}
         </ul>
+        </nav>        
+        </div>
     )
 };
 
 
 
 function mapStateToProps(state) {
-    return { selectedSources: state.selectedSources }
+    return {
+        selectedSources: state.selectedSources,
+        showMenu: state.toggleMenu
+    }
 }
 
 

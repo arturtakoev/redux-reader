@@ -1,14 +1,11 @@
-import { FETCH_NEWS, INVALIDATE_SOURCE, SELECT_SOURCE, REQUEST_POSTS, RECEIVE_POSTS, SELECT_ALL, UNSELECT_ALL } from "./types";
+import { FETCH_NEWS, INVALIDATE_SOURCE, SELECT_SOURCE, REQUEST_POSTS, RECEIVE_POSTS, SELECT_ALL, UNSELECT_ALL, TOGGLE_MENU } from "./types";
 //import axios from 'axios';
 import fetch from 'cross-fetch';
 import { SOURCES } from "./sources";
 
-export const subredditUrl = subreddit => {
-    return {
-        title: subreddit,
-        url: `https://www.reddit.com/r/${subreddit}.json`
-    }
-}
+export const toggleMenu = () => ({
+    type: TOGGLE_MENU
+})
 
 export const selectSource = sources => ({
     type: SELECT_SOURCE,
@@ -116,19 +113,21 @@ const responseToPosts = (source, json) => {
         return posts
     }
     if (source.api === 'rssfeed') {
-        json.items.map(post => {(
-            posts.push(
-                {
-                    title: post[source.jsonProperties.title],
-                    url: post[source.jsonProperties.url],
-                    comments: post[source.jsonProperties.comments],
-                    site: source.jsonProperties.site,
-                    created: new Date(post[source.jsonProperties.created].replace(/-/g, "/")),
-                }
+        json.items.map(post => {
+            (
+                posts.push(
+                    {
+                        title: post[source.jsonProperties.title],
+                        url: post[source.jsonProperties.url],
+                        comments: post[source.jsonProperties.comments],
+                        site: source.jsonProperties.site,
+                        created: new Date(post[source.jsonProperties.created].replace(/-/g, "/")),
+                    }
+                )
             )
-        )}
-        
-    )
+        }
+
+        )
         return posts
     }
 }

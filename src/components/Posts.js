@@ -47,9 +47,6 @@ const Posts = ({ posts, selectedSource }) => {
 
     return (
         <div>
-            <div className="title">
-                <h4>{selectedSource}</h4>
-            </div>
             <ul className="list-group list-group-flush">
                 {posts.map((post, i) =>
 

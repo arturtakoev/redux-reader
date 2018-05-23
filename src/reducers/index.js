@@ -1,6 +1,17 @@
 import { combineReducers } from 'redux';
-import { SELECT_SOURCE, INVALIDATE_SOURCE, REQUEST_POSTS, RECEIVE_POSTS, SELECT_SOURCES, SELECT_ALL, UNSELECT_ALL } from '../actions/types';
+import { SELECT_SOURCE, INVALIDATE_SOURCE, REQUEST_POSTS, RECEIVE_POSTS, SELECT_SOURCES, SELECT_ALL, UNSELECT_ALL, TOGGLE_MENU } from '../actions/types';
 
+
+function toggleMenu(state = {}, action) {
+  switch (action.type) {
+    case TOGGLE_MENU:
+      
+      return Object.assign({}, state, {isVisible: !state.isVisible});
+  
+    default:
+      return state;
+  }
+}
 
 function selectedSources(state = {}, action) {
   switch (action.type) {
@@ -82,7 +93,8 @@ function postsBySource(state = {}, action) {
 
 const rootReducer = combineReducers({
   postsBySource,
-  selectedSources
+  selectedSources,
+  toggleMenu
 });
 
 export default rootReducer;

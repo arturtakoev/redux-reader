@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchPostsIfNeeded, selectSource, selectSourcesList, invalidateSource, selectAll, unSelectAll } from '../actions';
+import {
+    fetchPostsIfNeeded,
+    selectSource,
+    selectSourcesList,
+    invalidateSource,
+    selectAll,
+    unSelectAll,
+    toggleMenu
+} from '../actions';
 import Posts from './Posts';
 import SideMenu from './side_menu';
 import _ from "lodash";
@@ -44,10 +52,17 @@ class App extends Component {
         const { dispatch } = this.props
         dispatch(unSelectAll(sources))
     }
+    handleToggle() {
+        const { dispatch } = this.props
+        dispatch(toggleMenu())
+    }
 
+    myFunction(x) {
+        x.classList.toggle("change");
+    }
 
     render() {
-        const { posts, postsBySource, selectedSources } = this.props
+        const { posts, postsBySource, selectedSources, toggleMenu } = this.props
 
         var isEmpty = true
         Object.values(selectedSources).map(value => {
@@ -60,12 +75,17 @@ class App extends Component {
         return (
             <div>
                 <div>
-                    <nav id="sidebar">
-                        <SideMenu onClick={this.handleSelectSource.bind(this)} onSelectAll={this.handleSelectAll.bind(this)} onUnselectAll={this.handleUnselectAll.bind(this)} />
-                    </nav>
+                    <SideMenu onClick={this.handleSelectSource.bind(this)}
+                        onSelectAll={this.handleSelectAll.bind(this)}
+                        onUnselectAll={this.handleUnselectAll.bind(this)} />
                 </div>
 
-                <div id="content">
+                <div id="content" className={toggleMenu.isVisible ? 'visible' : 'hidden'}>
+                    <div class="hamburger" onClick={this.handleToggle.bind(this)} className={toggleMenu.isVisible ? 'change' : 'visible'}>
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
                     {isEmpty === true ?
 
                         <div className="container info">
@@ -88,7 +108,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-    const { postsBySource, selectedSources } = state
+    const { postsBySource, selectedSources, toggleMenu } = state
     var posts = []
 
     Object.entries(selectedSources).map(([key, value]) => {
@@ -107,7 +127,8 @@ const mapStateToProps = state => {
     return {
         postsBySource,
         selectedSources,
-        posts
+        posts,
+        toggleMenu
     }
 }
 
