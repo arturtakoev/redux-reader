@@ -19,18 +19,16 @@ const SideMenu = ({ onClick, selectedSources, onSelectAll, onUnselectAll, showMe
 
     function renderSourcesChecks() {
         return listOfSources.map((source) => (
-            <div className="relative">
             <li>
                 <label className="containerOne" style={selectedSources[source].isSelected ? { color: sourceActiveColor } : { color: sourceNotActiveColot }}>{selectedSources[source].properties.title}
                     <input type="checkbox" onChange={(e) => onClick(e, [source])} checked={selectedSources[source].isSelected} />
                     <span className="checkmark"></span>
                 </label>
             </li>
-            </div>
         ))
     }
     return (
-        <div>
+        <div className="relative">
         <nav id="sidebar" className={showMenu.isVisible ? 'visible' : 'hidden'}>
         <ul className="list-unstyled components">
             <div>

@@ -1,6 +1,9 @@
 body {
     font-family: Roboto, sans-serif;
 }
+.relative {
+    position: relative;
+}
 
 #icon {
     max-width: 40px;
@@ -29,11 +32,9 @@ body {
     border-right: 1px solid rgba(0,0,0,.125);
 }
 
-
 #sidebar.visible {
     width: 250px;
 }
-
 
 #content {
     transition: margin-left .5s;
@@ -53,7 +54,7 @@ a, a:hover, a:focus {
 
 #sidebar ul.components {
     padding: 20px 8px 8px 15px;
-    
+    width: 250px;
     cursor: pointer;
 }
 
@@ -121,7 +122,6 @@ a, a:hover, a:focus {
 .containerOne {
     display: block;
     position: relative;
-    
     padding-left: 30px;
     cursor: pointer;
     -webkit-user-select: none;
