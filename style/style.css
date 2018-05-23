@@ -82,7 +82,7 @@ a, a:hover, a:focus {
 
 @media (max-width: 450px) {
     #content.visible {
-        transition: opacity .5s;
+        transition: .5s;
     }
     #content.visible a {
         opacity: 0.1;
