@@ -1,5 +1,4 @@
 import { FETCH_NEWS, INVALIDATE_SOURCE, SELECT_SOURCE, REQUEST_POSTS, RECEIVE_POSTS, SELECT_ALL, UNSELECT_ALL, TOGGLE_MENU } from "./types";
-//import axios from 'axios';
 import fetch from 'cross-fetch';
 import { SOURCES } from "./sources";
 

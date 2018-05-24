@@ -70,10 +70,11 @@ a, a:hover, a:focus {
 }
 
 #content.hidden {
-    -webkit-transform: translateX(0%)
+    -webkit-transform: translateX(0)
 }
 #content.visible {
-    -webkit-transform: translateX(250px)
+    -webkit-transform: translateX(250px);
+    overflow: visible;
 }
 
 #content {
