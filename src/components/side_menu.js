@@ -28,7 +28,7 @@ const SideMenu = ({ onClick, selectedSources, onSelectAll, onUnselectAll, showMe
         ))
     }
     return (
-        <div className="relative">
+        <div>
         <nav id="sidebar" className={showMenu.isVisible ? 'visible' : 'hidden'}>
         <ul className="list-unstyled components">
             <div>
@@ -38,7 +38,7 @@ const SideMenu = ({ onClick, selectedSources, onSelectAll, onUnselectAll, showMe
                         All in one
                     </a>
                     <a onClick={(e) => onUnselectAll(e, listOfSources)} id="closeicon" className="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">clear</span>
                     </a>
                 </h3>
 

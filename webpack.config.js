@@ -7,7 +7,11 @@ VENDOR_LIBS = [
     "react-dom",
     "react-redux",
     "react-router",
-    "redux"
+    "redux",
+    "cross-fetch",
+    "lodash",
+    "redux-logger",
+    "redux-thunk"
 ];
 
 

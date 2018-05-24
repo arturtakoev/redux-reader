@@ -18,6 +18,11 @@ import _ from "lodash";
 
 class App extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {swipe: 250};
+      }
+
     componentWillMount() {
         const { dispatch, selectedSources, postsBySource } = this.props
 
@@ -57,10 +62,11 @@ class App extends Component {
         dispatch(toggleMenu())
     }
 
-    myFunction(x) {
-        x.classList.toggle("change");
-    }
-
+    onSwipeMove(position, event) {
+        this.setState({swipe: position.x})
+        console.log(this.state)
+      }
+    
     render() {
         const { posts, postsBySource, selectedSources, toggleMenu } = this.props
 
@@ -70,22 +76,29 @@ class App extends Component {
                 return isEmpty = false
             }
         })
-        //console.log(selectedSources)
+        
 
         return (
             <div>
                 <div>
                     <SideMenu onClick={this.handleSelectSource.bind(this)}
                         onSelectAll={this.handleSelectAll.bind(this)}
-                        onUnselectAll={this.handleUnselectAll.bind(this)} />
+                        onUnselectAll={this.handleUnselectAll.bind(this)} 
+                        />
                 </div>
-
-                <div id="content" className={toggleMenu.isVisible ? 'visible' : 'hidden'}>
+                
+                <div id="content" 
+                className={toggleMenu.isVisible ? 'visible' : 'hidden'} 
+                style={{transform: `translateX(${this.state.swipe})`}}
+                >
                     <div class="hamburger" onClick={this.handleToggle.bind(this)} className={toggleMenu.isVisible ? 'change' : 'visible'}>
                         <div class="bar1"></div>
                         <div class="bar2"></div>
                         <div class="bar3"></div>
                     </div>
+                    
+                        
+                   
                     {isEmpty === true ?
 
                         <div className="container info">
@@ -98,9 +111,9 @@ class App extends Component {
                             </div>
                             : <div ><Posts posts={posts} /></div>
                         )
-
                     }
                 </div>
+                
             </div>
         )
 
