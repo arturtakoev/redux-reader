@@ -12,6 +12,11 @@ body {
 }
 .close {
     font-size: 15px;
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: 400;
+}
+.close:hover{
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .close:focus {
