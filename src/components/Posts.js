@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from "react-redux";
 import { SOURCES } from '../actions/sources';
 
+import styles from '../../style/Posts.css'
+
 const TIMEBEFORE_NOW = 'Just now'
 const TIMEBEFORE_MINUTE = ' minute ago'
 const TIMEBEFORE_MINUTES = ' minutes ago'
@@ -47,16 +49,16 @@ const Posts = ({ posts, selectedSource }) => {
 
     return (
         <div>
-            <ul className="list-group list-group-flush">
+            <ul className={`list-group list-group-flush`}>
                 {posts.map((post, i) =>
 
                     <a href={post.url} target="_blank" className="list-group-item list-group-item-action flex-column align-items-start" key={i}>
                         <div className="d-flex w-100 justify-content-between">
-                            <h6 className="mb-1 col-10">{post.title}</h6>
-                            <small>{time_ago(post.created)}</small>
+                            <p className={styles.title}>{post.title}</p>
                         </div>
-                        <div className="d-flex w-100 justify-content-between">
+                        <div className={`${styles.info}`}>
                             <small>{post.site}</small>
+                            <small>{time_ago(post.created)}</small>
                         </div>
                     </a>
                 )}

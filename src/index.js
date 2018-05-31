@@ -8,11 +8,11 @@ import { selectSource, fetchPostsIfNeeded, fetchNews, subredditUrl } from './act
 import { createLogger } from 'redux-logger'
 
 require('./assets/newsIcon.png')
-import css from '../style/style.css';
+import styles from '../style/index.css';
 
 //import 'babel-polyfill';
 
-import App from './components/app';
+import App from './components/App';
 import rootReducer from './reducers';
 import { SOURCES } from './actions/sources';
 import initState from './state_init';

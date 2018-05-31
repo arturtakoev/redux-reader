@@ -33,7 +33,7 @@ const config = {
                 test: /\.js$/
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|gif|svg)$/,
                 use: [
                     {
                         loader: 'url-loader',
@@ -46,7 +46,18 @@ const config = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use:
+                    [
+                        'style-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: true,
+                                localIdentName: "[name]__[local]___[hash:base64:5]"
+                            },
+                        }
+                    ]
             }
         ]
     },

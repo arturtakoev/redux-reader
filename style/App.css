@@ -1,0 +1,54 @@
+/* Container */
+.content {
+    transition: all .5s;
+    padding: 10px;
+    width: 100%;
+}
+
+.visible {
+    -webkit-transform: translateX(250px);
+    width: calc(100% - 250px);
+}
+
+@media (max-width: 450px) {
+    .visible {
+        transition: .5s;
+    }
+    .visible a {
+        opacity: 0.1;
+    }
+}
+
+.info {
+    height:100vh;
+    display: block;
+    text-align: center;
+    padding-top: 40vh;
+    font-size: 15px;
+    color: rgb(0, 0, 0, 0.54);
+}
+
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #ff5252;
+    margin: 6px 0;
+    transition: 0.5s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, -6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2{opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(9px);
+    transform: rotate(45deg) translate(-9px, -6px);
+}

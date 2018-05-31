@@ -1,0 +1,12 @@
+.title {
+    font-size: 15px;
+    font-weight: 350;
+    margin-bottom: 5px;
+}
+
+.info {
+    opacity: 0.54;
+    justify-content: space-between;
+    display: flex;
+    text-overflow: clip;
+}

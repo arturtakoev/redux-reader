@@ -10,9 +10,9 @@ import {
     toggleMenu
 } from '../actions';
 import Posts from './Posts';
-import SideMenu from './side_menu';
+import SideMenu from './SideMenu';
 import _ from "lodash";
-
+import styles from '../../style/App.css'
 
 
 
@@ -20,8 +20,8 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {swipe: 250};
-      }
+        this.state = { swipe: 250 };
+    }
 
     componentWillMount() {
         const { dispatch, selectedSources, postsBySource } = this.props
@@ -63,10 +63,10 @@ class App extends Component {
     }
 
     onSwipeMove(position, event) {
-        this.setState({swipe: position.x})
+        this.setState({ swipe: position.x })
         console.log(this.state)
-      }
-    
+    }
+
     render() {
         const { posts, postsBySource, selectedSources, toggleMenu } = this.props
 
@@ -76,44 +76,38 @@ class App extends Component {
                 return isEmpty = false
             }
         })
-        
+
 
         return (
             <div>
                 <div>
                     <SideMenu onClick={this.handleSelectSource.bind(this)}
                         onSelectAll={this.handleSelectAll.bind(this)}
-                        onUnselectAll={this.handleUnselectAll.bind(this)} 
-                        />
+                        onUnselectAll={this.handleUnselectAll.bind(this)}
+                    />
                 </div>
-                
-                <div id="content" 
-                className={toggleMenu.isVisible ? 'visible' : 'hidden'} 
-                style={{transform: `translateX(${this.state.swipe})`}}
-                >
-                    <div class="hamburger" onClick={this.handleToggle.bind(this)} className={toggleMenu.isVisible ? 'change' : 'visible'}>
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>
+
+                <div className={`${styles.content} ${toggleMenu.isVisible ? styles.visible : styles.hidden}`}>
+                    <div class={styles.hamburger} onClick={this.handleToggle.bind(this)} className={toggleMenu.isVisible ? styles.change : ''}>
+                        <div class={`${styles.bar1}`}></div>
+                        <div class={`${styles.bar2}`}></div>
+                        <div class={`${styles.bar3}`}></div>
                     </div>
-                    
-                        
-                   
+
                     {isEmpty === true ?
 
-                        <div className="container info">
-                            <h5>Select source</h5>
-                        </div>
+                        <div className={styles.info}>
+                            Select source
+                            </div>
 
                         : (posts.length === 0 ?
-                            <div className="container info">
-                                <img src={require('../assets/loading.gif')} />
+                            <div className={styles.info}>
+                                <img src={require('../assets/loading.svg')} />
                             </div>
                             : <div ><Posts posts={posts} /></div>
                         )
                     }
                 </div>
-                
             </div>
         )
 
