@@ -7,10 +7,15 @@
 
 .visible {
     -webkit-transform: translateX(250px);
-    width: calc(100% - 250px);
+    
+}
+@media (min-width: 480px) {
+    .visible {
+        width: calc(100% - 250px);
+    }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 480px) {
     .visible {
         transition: .5s;
     }
@@ -25,7 +30,14 @@
     text-align: center;
     padding-top: 40vh;
     font-size: 15px;
-    color: rgb(0, 0, 0, 0.54);
+}
+
+.text {
+    opacity: 0.54;
+}
+
+.loading {
+    opacity: 1;
 }
 
 .hamburger {

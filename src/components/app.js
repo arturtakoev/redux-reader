@@ -18,11 +18,6 @@ import styles from '../../style/App.css'
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { swipe: 250 };
-    }
-
     componentWillMount() {
         const { dispatch, selectedSources, postsBySource } = this.props
 
@@ -62,11 +57,6 @@ class App extends Component {
         dispatch(toggleMenu())
     }
 
-    onSwipeMove(position, event) {
-        this.setState({ swipe: position.x })
-        console.log(this.state)
-    }
-
     render() {
         const { posts, postsBySource, selectedSources, toggleMenu } = this.props
 
@@ -95,14 +85,12 @@ class App extends Component {
                     </div>
 
                     {isEmpty === true ?
-
                         <div className={styles.info}>
-                            Select source
-                            </div>
-
+                            <p className={styles.text}>Select source</p>
+                        </div>
                         : (posts.length === 0 ?
                             <div className={styles.info}>
-                                <img src={require('../assets/loading.svg')} />
+                                <img className={styles.loading} src={require('../assets/loading.svg')} />
                             </div>
                             : <div ><Posts posts={posts} /></div>
                         )
